@@ -1,0 +1,302 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zapoo | Your Account</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+<link href="{{ url_for('static', filename='css/website.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/Account.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/base/jquery-ui.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/base/theme.css') }}" rel="stylesheet">
+<script src="{{ url_for('static', filename='js/libs/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/util.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/collapse.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/dropdown.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/jquery-ui.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/wwb16.min.js') }}"></script>
+<script>
+function submitchangePassword()
+{
+   var regexp;
+   var currentPasswordBox = document.getElementById('currentPasswordBox');
+   if (!(currentPasswordBox.disabled || currentPasswordBox.style.display === 'none' || currentPasswordBox.style.visibility === 'hidden'))
+   {
+      if (currentPasswordBox.value == "")
+      {
+         alert("Please enter a value for the \"CurrentPasswordBox\" field.");
+         currentPasswordBox.focus();
+         return false;
+      }
+      if (currentPasswordBox.value.length < 0)
+      {
+         alert("Please enter at least 0 characters in the \"CurrentPasswordBox\" field.");
+         currentPasswordBox.focus();
+         return false;
+      }
+      if (currentPasswordBox.value.length > 100)
+      {
+         alert("Please enter at most 100 characters in the \"CurrentPasswordBox\" field.");
+         currentPasswordBox.focus();
+         return false;
+      }
+   }
+   var newPasswordBox = document.getElementById('newPasswordBox');
+   if (!(newPasswordBox.disabled || newPasswordBox.style.display === 'none' || newPasswordBox.style.visibility === 'hidden'))
+   {
+      if (newPasswordBox.value == "")
+      {
+         alert("Please enter a value for the \"CurrentPasswordBox\" field.");
+         newPasswordBox.focus();
+         return false;
+      }
+      if (newPasswordBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"CurrentPasswordBox\" field.");
+         newPasswordBox.focus();
+         return false;
+      }
+      if (newPasswordBox.value.length > 100)
+      {
+         alert("Please enter at most 100 characters in the \"CurrentPasswordBox\" field.");
+         newPasswordBox.focus();
+         return false;
+      }
+      if (newPasswordBox.value != document.getElementById('newPasswordBox2').value)
+      {
+         alert("New passwords must match!");
+         newPasswordBox.focus();
+         return false;
+      }
+   }
+   var newPasswordBox2 = document.getElementById('newPasswordBox2');
+   if (!(newPasswordBox2.disabled || newPasswordBox2.style.display === 'none' || newPasswordBox2.style.visibility === 'hidden'))
+   {
+      if (newPasswordBox2.value == "")
+      {
+         alert("Please enter a value for the \"CurrentPasswordBox2\" field.");
+         newPasswordBox2.focus();
+         return false;
+      }
+      if (newPasswordBox2.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"CurrentPasswordBox2\" field.");
+         newPasswordBox2.focus();
+         return false;
+      }
+      if (newPasswordBox2.value.length > 100)
+      {
+         alert("Please enter at most 100 characters in the \"CurrentPasswordBox2\" field.");
+         newPasswordBox2.focus();
+         return false;
+      }
+      if (newPasswordBox2.value != document.getElementById('newPasswordBox').value)
+      {
+         alert("New Passwords must Match!");
+         newPasswordBox2.focus();
+         return false;
+      }
+   }
+   return true;
+}
+</script>
+<script src="{{ url_for('static', filename='js/libs/wwb16.min.js') }}"></script>
+<script>
+$(document).ready(function()
+{
+   $('#reviewsImage1').addClass('visibility-hidden');
+   $('#portfolio-image2').addClass('visibility-hidden');
+   $('#ThemeableMenu2 .dropdown-toggle').dropdown({popperConfig:{placement:'bottom-start',modifiers:{computeStyle:{gpuAcceleration:false}}}});
+   $(document).on('click','.ThemeableMenu2-navbar-collapse.show',function(e)
+   {
+      if ($(e.target).is('a') && ($(e.target).attr('class') != 'dropdown-toggle')) 
+      {
+         $(this).collapse('hide');
+      }
+   });
+   $("a[href*='#signupmaingrid']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#wb_signupmaingrid').offset().top-88 }, 600, 'easeOutCirc');
+   });
+   function onScrollsignupmaingrid()
+   {
+      var $obj = $("#wb_signupmaingrid");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(false))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('reviewsImage1', 'animate-fade-in-up', 0, 1000);
+         AnimateCss('portfolio-image2', 'animate-fade-in-up', 500, 1000);
+      }
+   }
+   onScrollsignupmaingrid();
+   $(window).scroll(function(event)
+   {
+      onScrollsignupmaingrid();
+   });
+   $("#deleteDialog").dialog(
+   {
+      title: 'Warning!',
+      modal: true,
+      width: 403,
+      height: 188,
+      position: { my: 'center', at: 'center', of: window },
+      buttons:
+      [
+         {
+            text: "Yes",
+            click: function()
+            {
+			if(confirm('Are you really sure you want to delete the listing?')){
+            linkid = $("#link");
+
+				fetch(linkid.text(), {
+					method: 'DELETE',
+					headers: {'content-type': 'application/json',
+					redirect: true}
+					})
+					.then(res => console.log(res))
+					.catch(function(e){ return prompt("Error!")})
+				}
+            $('.hasid').remove();
+            $(this).dialog("close");
+            }
+         },
+         {
+            text: "No",
+            click: function()
+            {
+               $(this).dialog("close");
+            }
+         }
+      ],
+      resizable: false,
+      draggable: false,
+      closeOnEscape: true,
+      show: { effect: 'slide', direction: 'down', duration: 400 },
+      hide: { effect: 'slide', direction: 'up', duration: 400 },
+      autoOpen: false,
+      classes: {'ui-dialog': 'deleteDialog'} 
+   });
+});
+</script>
+</head>
+<body>
+<div id="wb_LayoutGrid3">
+<form name="LayoutGrid3" method="post" action="" enctype="text/plain" id="LayoutGrid3">
+<div class="row">
+<div class="col-1">
+<div id="wb_ThemeableMenu2" style="display:inline-block;width:100%;z-index:0;">
+<div id="ThemeableMenu2" class="ThemeableMenu2" style="width:100%;height:auto !important;">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".ThemeableMenu2-navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="ThemeableMenu2-navbar-collapse collapse">
+   <ul class="nav navbar-nav">
+      <li class="nav-item">
+         <a href="/" class="nav-link">HOME</a>
+         </li>
+         <li class="nav-item">
+         <a href="/submitlisting" class="nav-link">SUBMIT A LISTING</a>
+         </li>
+         <li class="nav-item">
+         <a href="/categories" class="nav-link">CATEGORIES</a>
+         </li>
+         <li class="nav-item">
+         <a href="/contact" class="nav-link">CONTACT</a>
+         </li>
+         <li class="nav-item">
+         <a href="/about" class="nav-link">ABOUT</a>
+         </li>
+   </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-2">
+<input type="text" id="searchBox" style="display:block;width: 100%;height:36px;z-index:1;" name="searchTerm" value="" spellcheck="false" placeholder="Enter anything">
+</div>
+<div class="col-3">
+   <input type="submit" id="searchButton" name="searchSubmit" value="Submit" style="display:inline-block;width:96px;height:37px;">
+</div>
+</div>
+</form>
+</div>
+<div id="wb_signupmaingrid">
+<div id="signupmaingrid">
+<div class="row">
+<div class="col-1">
+<div id="wb_accountHeading" style="display:inline-block;width:100%;z-index:17;">
+<h1 id="accountHeading">Account Info</h1>
+</div>
+<div id="wb_LayoutGrid1">
+<form name="changePassword" method="post" action="" enctype="multipart/form-data" id="LayoutGrid1" onsubmit="return submitchangePassword()">
+<div class="row">
+<div class="col-1">
+<div id="wb_emailText">
+<span style="color:#000000;font-family:Arial;font-size:21px;">Email:</span>
+</div>
+<div id="wb_emailValue">
+<span style="color:#000000;font-family:Arial;font-size:13px;"> {{ cuser.user_email }}</span>
+</div>
+<div id="wb_listingLinkLabel">
+<span style="color:#000000;font-family:Arial;font-size:21px;">Listing:</span>
+</div>
+{% if cuser.lid %}
+<div id="wb_listingLinkText" class="hasid">
+<a id="link" href="/categories/{{cuser.get_listing().get_category_name().lower()}}/listings/{{cuser.lid}}" style="color:#000000;font-family:Arial;font-size:13px;">/categories/{{cuser.get_listing().get_category_name().lower()}}/listings/{{cuser.lid}}</a>
+</div>
+<div id="wb_editListingLink" class="hasid">
+<span style="color:#000000;font-family:Arial;font-size:13px;"><a href="/submitlisting/edit">Edit Listing</a></span>
+</div>
+<div id="wb_deleteListingLink" class="hasid">
+<span style="color:#000000;font-family:Arial;font-size:13px;"><a href="#" onclick="$('#deleteDialog').dialog('open');return false;">Delete Listing</a></span>
+</div>
+{% else %}
+<div>No listing</div>
+{% endif %}
+<div id="wb_Text1">
+<span style="color:#000000;font-family:Arial;font-size:13px;"><a href="/logout">Log out</a></span>
+</div>
+</div>
+<div class="col-2">
+<div id="wb_changePasswordHeading" style="display:inline-block;width:100%;z-index:9;">
+<h3 id="changePasswordHeading">Change Password</h3>
+</div>
+<label for="currentPasswordBox" id="currentPasswordLabel" style="display:block;width:100%;line-height:16px;z-index:10;">Type in Current Password</label>
+<input type="text" id="currentPasswordBox" style="display:block;width: 100%;height:26px;z-index:11;" name="CurrentPasswordBox" value="" spellcheck="false">
+<label for="newPasswordBox" id="newPasswordLabel" style="display:block;width:100%;line-height:16px;z-index:12;">Enter New Password</label>
+<input type="text" id="newPasswordBox" style="display:block;width: 100%;height:26px;z-index:13;" name="CurrentPasswordBox" value="" maxlength="100" spellcheck="false">
+<label for="" id="newPasswordLabel2" style="display:block;width:100%;line-height:16px;z-index:14;">Enter New Password</label>
+<input type="text" id="newPasswordBox2" style="display:block;width: 100%;height:26px;z-index:15;" name="CurrentPasswordBox2" value="" maxlength="100" spellcheck="false">
+<input type="submit" id="submitButton" name="SubmitButton" value="Submit" style="display:inline-block;width:100px;height:46px;z-index:16;">
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid4">
+<div id="LayoutGrid4">
+<div class="col-1">
+<div id="wb_footerText">
+<p style="font-size:13px;line-height:16px;color:#F0D217;">A capstone project by Adam Dural</p>
+</div>
+</div>
+</div>
+</div>
+<div id="deleteDialog">
+   <div id="wb_Text2" style="position:absolute;left:9px;top:7px;width:320px;height:30px;z-index:34;">
+   <span style="color:#000000;font-family:Arial;font-size:13px;">Are you sure you want to delete your listing? Everything saved will be lost!</span></div>
+   </div>
+</body>
+</html>

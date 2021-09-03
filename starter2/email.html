@@ -1,0 +1,393 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Email</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body
+{
+   background-color: #4F4F4F;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.1875;
+   margin: 0;
+   padding: 0;
+}
+a
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+a:visited
+{
+   color: #800080;
+}
+a:active
+{
+   color: #FF0000;
+}
+a:hover
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+input:focus, textarea:focus, select:focus
+{
+   outline: none;
+}
+#wb_titleGrid
+{
+   clear: both;
+   position: relative;
+   table-layout: fixed;
+   display: table;
+   text-align: center;
+   width: 100%;
+   background-color: #F0D217;
+   background-image: none;
+   border: 6px solid #000000;
+   box-sizing: border-box;
+   margin: 0px 0px 10px 0px;
+}
+#titleGrid
+{
+   box-sizing: border-box;
+   padding: 0px 15px 0px 15px;
+   margin-right: auto;
+   margin-left: auto;
+}
+#titleGrid > .row
+{
+   margin-right: -15px;
+   margin-left: -15px;
+}
+#titleGrid > .row > .col-1, #titleGrid > .row > .col-2, #titleGrid > .row > .col-3
+{
+   box-sizing: border-box;
+   font-size: 0px;
+   min-height: 1px;
+   padding-right: 15px;
+   padding-left: 15px;
+   position: relative;
+}
+#titleGrid > .row > .col-1, #titleGrid > .row > .col-2, #titleGrid > .row > .col-3
+{
+   float: left;
+}
+#titleGrid > .row > .col-1
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #FFFFFF;
+   width: 33.33333333%;
+   text-align: left;
+}
+#titleGrid > .row > .col-2
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #FFFFFF;
+   width: 41.66666667%;
+   text-align: left;
+}
+#titleGrid > .row > .col-3
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #FFFFFF;
+   width: 25%;
+   text-align: left;
+}
+#titleGrid:before,
+#titleGrid:after,
+#titleGrid .row:before,
+#titleGrid .row:after
+{
+   display: table;
+   content: " ";
+}
+#titleGrid:after,
+#titleGrid .row:after
+{
+   clear: both;
+}
+@media (max-width: 480px)
+{
+#titleGrid > .row > .col-1, #titleGrid > .row > .col-2, #titleGrid > .row > .col-3
+{
+   float: none;
+   width: 100% !important;
+}
+}
+#wb_Image1
+{
+   margin: 0;
+   vertical-align: top;
+}
+#Image1
+{
+   border: 0px solid #000000;
+   padding: 0;
+   display: inline-block;
+   width: 195px;
+   height: 130px;
+   vertical-align: top;
+}
+#wb_LayoutGrid1
+{
+   clear: both;
+   position: relative;
+   table-layout: fixed;
+   display: table;
+   text-align: center;
+   width: 100%;
+   background-color: #A9A9A9;
+   background-image: none;
+   border: 6px solid #000000;
+   box-sizing: border-box;
+   margin: 0;
+}
+#LayoutGrid1
+{
+   box-sizing: border-box;
+   padding: 0px 15px 0px 15px;
+   margin-right: auto;
+   margin-left: auto;
+}
+#LayoutGrid1 > .row
+{
+   margin-right: -15px;
+   margin-left: -15px;
+}
+#LayoutGrid1 > .row > .col-1
+{
+   box-sizing: border-box;
+   font-size: 0px;
+   min-height: 1px;
+   padding-right: 15px;
+   padding-left: 15px;
+   position: relative;
+}
+#LayoutGrid1 > .row > .col-1
+{
+   float: left;
+}
+#LayoutGrid1 > .row > .col-1
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #FFFFFF;
+   width: 100%;
+   text-align: left;
+}
+#LayoutGrid1:before,
+#LayoutGrid1:after,
+#LayoutGrid1 .row:before,
+#LayoutGrid1 .row:after
+{
+   display: table;
+   content: " ";
+}
+#LayoutGrid1:after,
+#LayoutGrid1 .row:after
+{
+   clear: both;
+}
+@media (max-width: 480px)
+{
+#LayoutGrid1 > .row > .col-1
+{
+   float: none;
+   width: 100% !important;
+}
+}
+#wb_emailHeading
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #000000;
+   box-sizing: border-box;
+   vertical-align: top;
+   margin: 0px 0px 10px 0px;
+   padding: 0;
+   text-align: left;
+}
+#emailHeading
+{
+   color: #000000;
+   font-family: Arial;
+   font-weight: bold;
+   font-style: normal;
+   font-size: 32px;
+   margin: 0;
+   text-align: left;
+}
+#wb_welcomeText 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #000000;
+   padding: 0;
+   margin: 0px 0px 10px 0px;
+   text-align: left;
+}
+#wb_welcomeText div
+{
+   text-align: left;
+}
+#wb_welcomeText
+{
+   display: block;
+   margin: 0px 0px 10px 0px;
+   box-sizing: border-box;
+   width: 100%;
+}
+#wb_LayoutGrid4
+{
+   clear: both;
+   position: relative;
+   table-layout: fixed;
+   display: table;
+   text-align: center;
+   width: 100%;
+   background-color: #000000;
+   background-image: none;
+   border: 6px solid #000000;
+   box-sizing: border-box;
+   margin: 10px 0px 0px 0px;
+   margin-right: auto;
+   margin-left: auto;
+   max-width: 1170px;
+}
+#LayoutGrid4
+{
+   box-sizing: border-box;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-flex-wrap: wrap;
+   flex-wrap: wrap;
+   padding: 20px 0px 20px 0px;
+   margin-right: auto;
+   margin-left: auto;
+}
+#LayoutGrid4 > .col-1
+{
+   box-sizing: border-box;
+   font-size: 0px;
+   min-height: 1px;
+   padding-right: 100px;
+   padding-left: 100px;
+   position: relative;
+}
+#LayoutGrid4 > .col-1
+{
+   -webkit-flex: 0 0 auto;
+   flex: 0 0 auto;
+}
+#LayoutGrid4 > .col-1
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #FFFFFF;
+   flex-basis: 100%;
+   max-width: 100%;
+   display: -webkit-flex;
+   -webkit-flex-wrap: wrap;
+   -webkit-align-content: flex-start;
+   -webkit-align-self: stretch;
+   -webkit-align-items: flex-start;
+   display: flex;
+   flex-wrap: wrap;
+   align-content: flex-start;
+   align-self: stretch;
+   align-items: flex-start;
+   -webkit-justify-content: center;
+   justify-content: center;
+   text-align: center;
+}
+@media (max-width: 480px)
+{
+#LayoutGrid4 > .col-1
+{
+   -webkit-flex-basis: 100% !important;
+   flex-basis: 100% !important;
+   max-width: 100% !important;
+}
+}
+#wb_footerText 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #000000;
+   padding: 10px 10px 10px 10px;
+   margin: 0;
+   text-align: center;
+}
+#wb_footerText
+{
+   color: #F0D217;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 16px;
+}
+#wb_footerText p, #wb_footerText ul
+{
+   margin: 0;
+   padding: 0;
+}
+#wb_footerText
+{
+   display: block;
+   margin: 0;
+   box-sizing: border-box;
+   width: 100%;
+}
+</style>
+</head>
+<body>
+<div id="wb_titleGrid">
+<div id="titleGrid">
+<div class="row">
+<div class="col-1">
+</div>
+<div class="col-2">
+<div id="wb_Image1" style="display:inline-block;width:195px;height:130px;z-index:0;">
+<img src="images/Logo.png" id="Image1" alt="">
+</div>
+</div>
+<div class="col-3">
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid1">
+<div id="LayoutGrid1">
+<div class="row">
+<div class="col-1">
+<div id="wb_emailHeading" style="display:inline-block;width:100%;z-index:1;">
+<h1 id="emailHeading">Dear ~USER~</h1>
+</div>
+<div id="wb_welcomeText">
+<span style="color:#000000;font-family:Arial;font-size:13px;">Thank you for registering with Zapoo! Please click on <a> this link</a> to continue with registration.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid4">
+<div id="LayoutGrid4">
+<div class="col-1">
+<div id="wb_footerText">
+<p style="font-size:13px;line-height:16px;color:#F0D217;">A capstone project by Adam Dural</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

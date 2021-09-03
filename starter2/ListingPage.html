@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zapoo | {{ listt.company_name }}</title>
+<meta name="author" content="Adam Dural">
+<meta name="categories" content="Business Listing">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="7 days">
+<meta name="expires" content="Mon, 17 May 2021 10:26:38 GMT">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+<link href="{{ url_for('static', filename='css/website.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/ListingPage.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/base/jquery-ui.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/base/theme.css') }}" rel="stylesheet">
+<script src="{{ url_for('static', filename='js/libs/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/util.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/collapse.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/dropdown.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/jquery-ui.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/wwb16.min.js') }}"></script>
+<script>
+$(document).ready(function()
+{
+   $('#reviewsImage1').addClass('visibility-hidden');
+   $('#portfolio-image2').addClass('visibility-hidden');
+   $('#ThemeableMenu2 .dropdown-toggle').dropdown({popperConfig:{placement:'bottom-start',modifiers:{computeStyle:{gpuAcceleration:false}}}});
+   $(document).on('click','.ThemeableMenu2-navbar-collapse.show',function(e)
+   {
+      if ($(e.target).is('a') && ($(e.target).attr('class') != 'dropdown-toggle')) 
+      {
+         $(this).collapse('hide');
+      }
+   });
+   $("a[href*='#signupmaingrid']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#wb_signupmaingrid').offset().top-88 }, 600, 'easeOutCirc');
+   });
+   function onScrollsignupmaingrid()
+   {
+      var $obj = $("#wb_signupmaingrid");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(false))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('reviewsImage1', 'animate-fade-in-up', 0, 1000);
+         AnimateCss('portfolio-image2', 'animate-fade-in-up', 500, 1000);
+      }
+   }
+   onScrollsignupmaingrid();
+   $(window).scroll(function(event)
+   {
+      onScrollsignupmaingrid();
+   });
+});
+</script>
+</head>
+<body>
+<div id="wb_LayoutGrid3">
+<form name="LayoutGrid3" method="post" action="" enctype="text/plain" id="LayoutGrid3">
+<div class="row">
+<div class="col-1">
+<div id="wb_ThemeableMenu2" style="display:inline-block;width:100%;z-index:0;">
+<div id="ThemeableMenu2" class="ThemeableMenu2" style="width:100%;height:auto !important;">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".ThemeableMenu2-navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="ThemeableMenu2-navbar-collapse collapse">
+<ul class="nav navbar-nav">
+   <li class="nav-item">
+      <a href="/" class="nav-link">HOME</a>
+      </li>
+      <li class="nav-item">
+      <a href="/signinup" class="nav-link">SIGN IN</a>
+      </li>
+      <li class="nav-item">
+      <a href="/categories" class="nav-link">CATEGORIES</a>
+      </li>
+      <li class="nav-item">
+      <a href="/contact" class="nav-link">CONTACT</a>
+      </li>
+      <li class="nav-item">
+      <a href="/about" class="nav-link">ABOUT</a>
+      </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-2">
+<input type="text" id="searchBox" style="display:block;width: 100%;height:36px;z-index:1;" name="searchTerm" value="" spellcheck="false" placeholder="Enter anything">
+</div>
+<div class="col-3">
+   <input type="submit" id="searchButton" name="searchSubmit" value="Submit" style="display:inline-block;width:96px;height:37px;">
+</div>
+</div>
+</form>
+</div>
+<div id="wb_signupmaingrid">
+<div id="signupmaingrid" style="background-image: url({{ url_for('static', filename='img/ListingPage_signupmaingrid_bkgrnd.png') }});">
+<div class="row">
+<div class="col-1">
+<div id="wb_listingHeading" style="display:inline-block;width:100%;z-index:20;">
+<h1 id="listingHeading">{{ listt.company_name }}</h1>
+</div>
+<div id="wb_LayoutGrid1">
+<div id="LayoutGrid1">
+<div class="row">
+<div class="col-1">
+<table style="display:table;width:100%;height:253px;z-index:15;" id="bTable">
+<tr>
+<td class="cell0"><div id="wb_addressLabel">
+<span style="color:#000000;font-family:Arial;font-size:20px;">Address</span>
+</div>
+</td>
+<td class="cell1"><div id="wb_addressValue">
+   <span style="color:#000000;font-family:Arial;font-size:13px;">{{ listt.address }}</span>
+</div>
+</td>
+</tr>
+<tr>
+<td class="cell0"><div id="wb_hoursLabel">
+<span style="color:#000000;font-family:Arial;font-size:20px;">Hours</span>
+</div>
+</td>
+<td class="cell2"><div id="wb_hoursValue">
+   <span style="color:#000000;font-family:Arial;font-size:13px;">{{ listt.hours }}</span>
+</div>
+</td>
+</tr>
+<tr>
+<td class="cell0"><div id="wb_emailLabel">
+<span style="color:#000000;font-family:Arial;font-size:20px;">Email</span>
+</div>
+</td>
+<td class="cell2"><div id="wb_emailValue">
+   <span style="color:#000000;font-family:Arial;font-size:13px;">{{ listt.business_email }}</span>
+</div>
+</td>
+</tr>
+<tr>
+<td class="cell0"><div id="wb_websiteLabel">
+<span style="color:#000000;font-family:Arial;font-size:20px;">Website</span>
+</div>
+</td>
+<td class="cell2"><div id="wb_websiteValue">
+   <a href="{{ listt.website_link }}" target="_blank" style="color:#000000;font-family:Arial;font-size:13px;">{{ listt.website_link }}</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="cell0"><div id="wb_phoneLabel">
+<span style="color:#000000;font-family:Arial;font-size:20px;">Phone</span>
+</div>
+</td>
+<td class="cell2"><div id="wb_phoneValue">
+   <span style="color:#000000;font-family:Arial;font-size:13px;">{{ listt.phone }}</span>
+</div>
+</td>
+</tr>
+<tr>
+<td class="cell0"><div id="wb_paymentLabel">
+<span style="color:#000000;font-family:Arial;font-size:20px;">Payment Methods</span>
+</div>
+</td>
+<td class="cell2"><div id="wb_paymentText">
+   <span style="color:#000000;font-family:Arial;font-size:13px;">{{ listt.payment_type }}</span>
+</div>
+</td>
+</tr>
+</table>
+<hr id="hLine" style="display:block;width: 100%;z-index:16;">
+<div id="wb_descText">
+<span style="color:#000000;font-family:Arial;font-size:13px;">{{ listt.description }}</span>
+</div>
+<hr id="Line1" style="display:block;width: 100%;z-index:18;">
+<div id="wb_categoryText">
+   <span style="color:#000000;font-family:Arial;font-size:13px;">{{ listt.keywords }}</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid5">
+<div id="LayoutGrid5">
+<div class="col-1">
+<div id="wb_footerText">
+<p style="font-size:13px;line-height:16px;color:#F0D217;">A capstone project by Adam Dural</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

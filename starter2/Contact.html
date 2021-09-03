@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zapoo | Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+<link href="static/css/website.css" rel="stylesheet">
+<link href="static/css/Contact.css" rel="stylesheet">
+<script src="static/js/libs/jquery-1.12.4.min.js"></script>
+<script src="static/js/libs/popper.min.js"></script>
+<script src="static/js/libs/util.min.js"></script>
+<script src="static/js/libs/collapse.min.js"></script>
+<script src="static/js/libs/dropdown.min.js"></script>
+<script src="static/js/libs/jquery-ui.min.js"></script>
+<script src="static/js/libs/wwb16.min.js"></script>
+<script>
+$(document).ready(function()
+{
+   $('#reviewsImage1').addClass('visibility-hidden');
+   $('#portfolio-image2').addClass('visibility-hidden');
+   $('#ThemeableMenu2 .dropdown-toggle').dropdown({popperConfig:{placement:'bottom-start',modifiers:{computeStyle:{gpuAcceleration:false}}}});
+   $(document).on('click','.ThemeableMenu2-navbar-collapse.show',function(e)
+   {
+      if ($(e.target).is('a') && ($(e.target).attr('class') != 'dropdown-toggle')) 
+      {
+         $(this).collapse('hide');
+      }
+   });
+   $("a[href*='#signupmaingrid']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#wb_signupmaingrid').offset().top-88 }, 600, 'easeOutCirc');
+   });
+   function onScrollsignupmaingrid()
+   {
+      var $obj = $("#wb_signupmaingrid");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(false))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('reviewsImage1', 'animate-fade-in-up', 0, 1000);
+         AnimateCss('portfolio-image2', 'animate-fade-in-up', 500, 1000);
+      }
+   }
+   onScrollsignupmaingrid();
+   $(window).scroll(function(event)
+   {
+      onScrollsignupmaingrid();
+   });
+});
+</script>
+</head>
+<body>
+<div id="wb_LayoutGrid3">
+<form name="LayoutGrid3" method="post" action="" enctype="text/plain" id="LayoutGrid3">
+<div class="row">
+<div class="col-1">
+<div id="wb_ThemeableMenu2" style="display:inline-block;width:100%;z-index:0;">
+<div id="ThemeableMenu2" class="ThemeableMenu2" style="width:100%;height:auto !important;">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".ThemeableMenu2-navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="ThemeableMenu2-navbar-collapse collapse">
+<ul class="nav navbar-nav">
+   <li class="nav-item">
+      <a href="/" class="nav-link">HOME</a>
+      </li>
+      <li class="nav-item">
+      <a href="/signinup" class="nav-link">SIGN IN</a>
+      </li>
+      <li class="nav-item">
+      <a href="/categories" class="nav-link">CATEGORIES</a>
+      </li>
+      <li class="nav-item">
+      <a href="/contact" class="nav-link">CONTACT</a>
+      </li>
+      <li class="nav-item">
+      <a href="/about" class="nav-link">ABOUT</a>
+      </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-2">
+<input type="text" id="searchBox" style="display:block;width: 100%;height:36px;z-index:1;" name="searchTerm" value="" spellcheck="false" placeholder="Enter anything">
+</div>
+<div class="col-3">
+   <input type="submit" id="searchButton" name="searchSubmit" value="Submit" style="display:inline-block;width:96px;height:37px;">
+</div>
+</div>
+</form>
+</div>
+<div id="wb_signupmaingrid">
+<div id="signupmaingrid">
+<div class="row">
+<div class="col-1">
+<div id="wb_contactHeading" style="display:inline-block;width:100%;z-index:3;">
+<h1 id="contactHeading">Contact</h1>
+</div>
+<table style="display:table;width:100%;height:81px;z-index:4;" id="Table1">
+<tr>
+<td class="cell0"><p style="font-size:13px;line-height:16px;color:#000000;"><span style="font-size:21px;line-height:24.5px;"> Name</span></p></td>
+<td class="cell1"><p style="font-size:13px;line-height:16px;color:#000000;"><span style="font-size:21px;line-height:24.5px;">&nbsp;</span><span style="font-size:21px;line-height:24.5px;">Title</span></p></td>
+<td class="cell0"><p style="font-size:13px;line-height:16px;color:#000000;"><span style="font-size:21px;line-height:24.5px;"> Phone Number</span></p></td>
+</tr>
+<tr>
+<td class="cell2"><p style="font-size:13px;line-height:16px;color:#000000;"> Adam Fraser</p></td>
+<td class="cell3"><p style="font-size:13px;line-height:16px;color:#000000;"> CEO</p></td>
+<td class="cell3"><p style="font-size:13px;line-height:16px;color:#000000;"> 555-555-5555</p></td>
+</tr>
+<tr>
+<td class="cell4"><p style="font-size:13px;line-height:16px;color:#000000;">&nbsp;</p></td>
+<td class="cell5"><p style="font-size:13px;line-height:16px;color:#000000;">&nbsp;</p></td>
+<td class="cell4"><p style="font-size:13px;line-height:16px;color:#000000;">&nbsp;</p></td>
+</tr>
+<tr>
+<td class="cell4"><p style="font-size:13px;line-height:16px;color:#000000;">&nbsp;</p></td>
+<td class="cell6"><p style="font-size:13px;line-height:16px;color:#000000;">&nbsp;</p></td>
+<td class="cell4"><p style="font-size:13px;line-height:16px;color:#000000;">&nbsp;</p></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid4">
+<div id="LayoutGrid4">
+<div class="col-1">
+<div id="wb_footerText">
+<p style="font-size:13px;line-height:16px;color:#F0D217;">A capstone project by Adam Dural</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

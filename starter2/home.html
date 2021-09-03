@@ -1,0 +1,375 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zapoo! | The World's Most Creative Business Directory!</title>
+<meta name="description" content="Zapoo is a business directory!">
+<meta name="keywords" content="Zapoo, Business Directory, Business Directories">
+<meta name="author" content="Adam Fraser">
+<meta name="categories" content="Business Directory">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="7 days">
+<meta name="expires" content="Tue, 10 May 2022 10:26:38 GMT">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+<link href="{{ url_for('static', filename='css/website.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/Home.css') }}" rel="stylesheet">
+<script src="{{ url_for('static', filename='js/libs/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/util.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/collapse.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/dropdown.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/skrollr.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/jquery-ui.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/wwb16.min.js') }}"></script>
+<script>
+$(document).ready(function()
+{
+   $('#reviewsImage1').addClass('visibility-hidden');
+   $('#portfolio-image2').addClass('visibility-hidden');
+   $('#reviewsImage1').addClass('visibility-hidden');
+   $('#portfolio-image2').addClass('visibility-hidden');
+   $('#wb_servicesCard1').addClass('visibility-hidden');
+   $('#wb_servicesCard3').addClass('visibility-hidden');
+   $('#wb_servicesCard5').addClass('visibility-hidden');
+   $("a[href*='#LayoutGrid1']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#wb_LayoutGrid1').offset().top }, 600, 'easeInSine');
+   });
+   function skrollrInit()
+   {
+      skrollr.init({forceHeight: false, mobileCheck: function() { return false; }, smoothScrolling: false});
+   }
+   skrollrInit();
+   $("a[href*='#intro']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#wb_intro').offset().top }, 600, 'easeOutCubic');
+   });
+   $("a[href*='#services1']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#wb_services1').offset().top-88 }, 600, 'easeOutCirc');
+   });
+   function onScrollservices1()
+   {
+      var $obj = $("#wb_services1");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(false))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('reviewsImage1', 'animate-fade-in-up', 0, 1000);
+         AnimateCss('portfolio-image2', 'animate-fade-in-up', 500, 1000);
+      }
+   }
+   onScrollservices1();
+   $(window).scroll(function(event)
+   {
+      onScrollservices1();
+   });
+   $("a[href*='#recentListingsLayoutGrid']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#wb_recentListingsLayoutGrid').offset().top-88 }, 600, 'easeOutCirc');
+   });
+   function onScrollrecentListingsLayoutGrid()
+   {
+      var $obj = $("#wb_recentListingsLayoutGrid");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(false))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('reviewsImage1', 'animate-fade-in-up', 0, 1000);
+         AnimateCss('portfolio-image2', 'animate-fade-in-up', 500, 1000);
+      }
+   }
+   onScrollrecentListingsLayoutGrid();
+   $(window).scroll(function(event)
+   {
+      onScrollrecentListingsLayoutGrid();
+   });
+   function onScrollservicesCard1()
+   {
+      var $obj = $("#wb_servicesCard1");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(true))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('wb_servicesCard1', 'animate-fade-in-left', 0, 1250);
+      }
+      else
+      if ($obj.hasClass("in-viewport") && !$obj.inViewPort(true))
+      {
+         $obj.removeClass("in-viewport");
+         AnimateCss('wb_servicesCard1', 'animate-fade-out', 0, 0);
+      }
+   }
+   if (!$('#wb_servicesCard1').inViewPort(true))
+   {
+      $('#wb_servicesCard1').addClass("in-viewport");
+   }
+   onScrollservicesCard1();
+   $(window).scroll(function(event)
+   {
+      onScrollservicesCard1();
+   });
+   function onScrollservicesCard3()
+   {
+      var $obj = $("#wb_servicesCard3");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(true))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('wb_servicesCard3', 'animate-fade-in-left', 0, 1250);
+      }
+      else
+      if ($obj.hasClass("in-viewport") && !$obj.inViewPort(true))
+      {
+         $obj.removeClass("in-viewport");
+         AnimateCss('wb_servicesCard3', 'animate-fade-out', 0, 0);
+      }
+   }
+   if (!$('#wb_servicesCard3').inViewPort(true))
+   {
+      $('#wb_servicesCard3').addClass("in-viewport");
+   }
+   onScrollservicesCard3();
+   $(window).scroll(function(event)
+   {
+      onScrollservicesCard3();
+   });
+   function onScrollservicesCard5()
+   {
+      var $obj = $("#wb_servicesCard5");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(true))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('wb_servicesCard5', 'animate-fade-in-left', 0, 1250);
+      }
+      else
+      if ($obj.hasClass("in-viewport") && !$obj.inViewPort(true))
+      {
+         $obj.removeClass("in-viewport");
+         AnimateCss('wb_servicesCard5', 'animate-fade-out', 0, 0);
+      }
+   }
+   if (!$('#wb_servicesCard5').inViewPort(true))
+   {
+      $('#wb_servicesCard5').addClass("in-viewport");
+   }
+   onScrollservicesCard5();
+   $(window).scroll(function(event)
+   {
+      onScrollservicesCard5();
+   });
+   $('#ThemeableMenu2 .dropdown-toggle').dropdown({popperConfig:{placement:'bottom-start',modifiers:{computeStyle:{gpuAcceleration:false}}}});
+   $(document).on('click','.ThemeableMenu2-navbar-collapse.show',function(e)
+   {
+      if ($(e.target).is('a') && ($(e.target).attr('class') != 'dropdown-toggle')) 
+      {
+         $(this).collapse('hide');
+      }
+   });
+});
+</script>
+</head>
+<body>
+<div id="wb_LayoutGrid1" data--150-top="opacity:0;" data-top="opacity:1;">
+<div id="LayoutGrid1" style="background-image: url(static/img/Home_LayoutGrid1_bkgrnd.png);">
+<div class="row">
+<div class="col-1">
+<div id="wb_Image1" style="display:inline-block;width:100%;height:auto;z-index:0;">
+<img src="static/img/Logo.png" id="Image1" alt="">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid3">
+<form name="LayoutGrid3" method="post" action="/search" enctype="text/plain" id="LayoutGrid3">
+<div class="row">
+<div class="col-1">
+<div id="wb_ThemeableMenu2" style="display:inline-block;width:100%;z-index:1;">
+<div id="ThemeableMenu2" class="ThemeableMenu2" style="width:100%;height:auto !important;">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".ThemeableMenu2-navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="ThemeableMenu2-navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<li class="nav-item">
+<a href="/" class="nav-link">HOME</a>
+</li>
+<li class="nav-item">
+<a href="/signinup" class="nav-link">SIGN IN</a>
+</li>
+<li class="nav-item">
+<a href="/categories" class="nav-link">CATEGORIES</a>
+</li>
+<li class="nav-item">
+<a href="/contact" class="nav-link">CONTACT</a>
+</li>
+<li class="nav-item">
+<a href="/about" class="nav-link">ABOUT</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-2">
+<input type="text" id="searchBox" style="display:block;width: 100%;height:36px;z-index:2;" name="searchterm" value="" spellcheck="false" placeholder="Enter anything">
+</div>
+<div class="col-3">
+   <input type="submit" id="searchButton" name="searchSubmit" value="Submit" style="display:inline-block;width:96px;height:37px;">
+</div>
+</div>
+</form>
+</div>
+<div id="wb_intro">
+<div id="intro-divider-top">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+<path class="divider-fill" style="opacity:0.33" d="M 473,67.3 C 269.1,155.6 209.9,36.616636 152.7,70.616636 66,122.41664 0,63.016636 0,63.016636 V 0 h 1000 v 59.7 c 0,0 -51.81843,27.426654 -84.61843,30.626654 C 882.58157,93.626654 842.3,76.7 829.3,66.9 806,49.6 745.3,8.7 694.9,4.7 644.5,0.7 492.4,59 473,67.3 Z" />
+<path class="divider-fill" style="opacity:0.66" d="M 717.08516,66.305009 C 671.58516,66.305009 656.8,44.1 604.9,28.2 576.3,19.5 462.89159,13.125046 359.19159,62.325046 255.49159,111.52505 259.2,32.9 201.7,67.3 115.7,118.3 0,39.8 0,39.8 V 0 H 1000 V 36.5 C 1000,36.5 971.8,18 907.9,18 810.2,18.1 758.78516,66.305009 717.08516,66.305009 Z" />
+<path class="divider-fill" d="M 766.1,28.9 C 566.1,-28.6 500.1,94.4 371,48.4 242,1.8 242.33166,13.69159 185.13166,28.89159 128.33166,44.09159 132.3,44.9 89.9,52.5 28.6,63.7 0,0 0,0 h 1000 c 0,0 -9.9,40.9 -83.6,48.1 C 842.7,55.3 829.6,47 766.1,28.9 Z" />
+</svg>
+</div>
+<div id="intro-divider-bottom">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+<path class="divider-fill" style="opacity:0.33" d="M 473,67.3 C 269.1,155.6 209.9,36.616636 152.7,70.616636 66,122.41664 0,63.016636 0,63.016636 V 0 h 1000 v 59.7 c 0,0 -51.81843,27.426654 -84.61843,30.626654 C 882.58157,93.626654 842.3,76.7 829.3,66.9 806,49.6 745.3,8.7 694.9,4.7 644.5,0.7 492.4,59 473,67.3 Z" />
+<path class="divider-fill" style="opacity:0.66" d="M 717.08516,66.305009 C 671.58516,66.305009 656.8,44.1 604.9,28.2 576.3,19.5 462.89159,13.125046 359.19159,62.325046 255.49159,111.52505 259.2,32.9 201.7,67.3 115.7,118.3 0,39.8 0,39.8 V 0 H 1000 V 36.5 C 1000,36.5 971.8,18 907.9,18 810.2,18.1 758.78516,66.305009 717.08516,66.305009 Z" />
+<path class="divider-fill" d="M 766.1,28.9 C 566.1,-28.6 500.1,94.4 371,48.4 242,1.8 242.33166,13.69159 185.13166,28.89159 128.33166,44.09159 132.3,44.9 89.9,52.5 28.6,63.7 0,0 0,0 h 1000 c 0,0 -9.9,40.9 -83.6,48.1 C 842.7,55.3 829.6,47 766.1,28.9 Z" />
+</svg>
+</div>
+<div id="intro">
+<div class="row">
+<div class="col-1">
+<div class="col-1-padding">
+<div id="wb_introHeading" style="display:inline-block;width:100%;z-index:4;">
+<h3 id="introHeading">Up for some backlink building?</h3>
+</div>
+<div id="wb_introText">
+<p style="font-size:16px;line-height:18px;font-weight:bold;color:#F0D217;line-height:22.4px;">Here on Zapoo, we encourage YOU to add every single of your business locations here.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_services1">
+<div id="services1">
+<div class="row">
+<div class="col-1">
+<div id="wb_servicesCard1" style="display:flex;width:100%;z-index:6;">
+   <div id="servicesCard1-card-body">
+      <div id="servicesCard1-card-item0"><i class="fa fa-mobile"></i></div>
+      <div id="servicesCard1-card-item1">Available on all devices!</div>
+      <div id="servicesCard1-card-item2">You won't need a computer to view this website. Simply flip up your phone and go to this website!</div>
+   </div>
+</div>
+<div id="wb_servicesCard3" style="display:flex;width:100%;z-index:7;">
+   <div id="servicesCard3-card-body">
+      <div id="servicesCard3-card-item0"><i class="fa fa-bolt"></i></div>
+      <div id="servicesCard3-card-item1">SEO Friendly</div>
+      <div id="servicesCard3-card-item2">Once you make a listing on here, your websites goes up in the SERPs. That's our magic doing the work!</div>
+   </div>
+</div>
+<div id="wb_servicesCard5" style="display:flex;width:100%;z-index:8;">
+   <div id="servicesCard5-card-body">
+      <div id="servicesCard5-card-item0"><i class="fa fa-check"></i></div>
+      <div id="servicesCard5-card-item1">Cost-Free</div>
+      <div id="servicesCard5-card-item2">Relax. This website won't cost you a concert ticket for your listing to be on our website. Enjoy our features and stay awhile!</div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid5">
+<div id="LayoutGrid5">
+<div class="row">
+<div class="col-1">
+<div id="wb_Heading1" style="display:inline-block;width:100%;z-index:9;">
+<h1 id="Heading1">Check out our most recently added listings below</h1>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_recentListingsLayoutGrid">
+<div id="recentListingsLayoutGrid">
+<div class="col-1">
+<div id="wb_Listing1" style="display:flex;width:100%;text-align:center;z-index:10;">
+   <div id="Listing1-card-body">
+      <div id="Listing1-card-item0">Business Name</div>
+      <div id="Listing1-card-item1">Short Description</div>
+      <div id="Listing1-card-item2">Location</div>
+      <div id="Listing1-card-item3">dcba</div>
+      <div id="Listing1-card-item4">Created on</div>
+      <div id="Listing1-card-item5">idk</div>
+      <hr id="Listing1-card-item6">
+      <div id="Listing1-card-item7">Visit Page</div>
+   </div>
+</div>
+</div>
+<div class="col-2">
+<div id="wb_Card1" style="display:flex;width:100%;text-align:center;z-index:11;">
+   <div id="Card1-card-body">
+      <div id="Card1-card-item0">Business Name</div>
+      <div id="Card1-card-item1">Short Description</div>
+      <div id="Card1-card-item2">Location</div>
+      <div id="Card1-card-item3">dcba</div>
+      <div id="Card1-card-item4">Created on</div>
+      <div id="Card1-card-item5">idk</div>
+      <hr id="Card1-card-item6">
+      <div id="Card1-card-item7">Visit Page</div>
+   </div>
+</div>
+</div>
+<div class="col-3">
+<div id="wb_Card2" style="display:flex;width:100%;text-align:center;z-index:12;">
+   <div id="Card2-card-body">
+      <div id="Card2-card-item0">Business Name</div>
+      <div id="Card2-card-item1">Short Description</div>
+      <div id="Card2-card-item2">Location</div>
+      <div id="Card2-card-item3">dcba</div>
+      <div id="Card2-card-item4">Created on</div>
+      <div id="Card2-card-item5">idk</div>
+      <hr id="Card2-card-item6">
+      <div id="Card2-card-item7">Visit Page</div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+<div id="upStickyLayer" style="position:fixed;text-align:left;left:auto;right:11px;top:auto;bottom:11px;width:50px;height:50px;z-index:25;">
+<div id="wb_upIcon" style="position:absolute;left:9px;top:8px;width:24px;height:24px;text-align:center;z-index:13;">
+<a href="#home"><div id="upIcon"><i class="fa fa-arrow-up"></i></div></a></div>
+</div>
+<div id="wb_LayoutGrid2">
+<div id="LayoutGrid2">
+<div class="col-1">
+<div id="wb_Heading3" style="display:inline-block;width:100%;z-index:14;">
+<h1 id="Heading3">Sign up today!</h1>
+</div>
+<hr id="Line2" style="display:inline-block;width:105px;z-index:15;">
+<div id="wb_Text3">
+<span style="color:#000000;font-family:Arial;font-size:16px;">What are you waiting for? Click the button below to go to our sign up page and get started!</span>
+</div>
+<a id="Button3" href="/signinup" style="display:block;width: 100%;;height:39px;z-index:17;">SIGN UP</a>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid4">
+<div id="LayoutGrid4">
+<div class="col-1">
+<div id="wb_footerText">
+<p style="font-size:13px;line-height:16px;color:#F0D217;">A capstone project by Adam Dural</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

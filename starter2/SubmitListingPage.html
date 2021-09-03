@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zapoo | Submit Listing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+<link href="static/css/website.css" rel="stylesheet">
+<link href="static/css/SubmitListingPage.css" rel="stylesheet">
+<script src="static/js/libs/jquery-1.12.4.min.js"></script>
+<script src="static/js/libs/popper.min.js"></script>
+<script src="static/js/libs/util.min.js"></script>
+<script src="static/js/libs/collapse.min.js"></script>
+<script src="static/js/libs/dropdown.min.js"></script>
+<script>
+function submitsubmitlistingform()
+{
+   var regexp;
+   var businessNameBox = document.getElementById('businessNameBox');
+   if (!(businessNameBox.disabled || businessNameBox.style.display === 'none' || businessNameBox.style.visibility === 'hidden'))
+   {
+      regexp = /^[A-Za-zÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ ,\'&.]*$/;
+      if (!regexp.test(businessNameBox.value))
+      {
+         alert("Please enter only letter characters in the \"BusinessNameBox\" field.");
+         businessNameBox.focus();
+         return false;
+      }
+      if (businessNameBox.value == "")
+      {
+         alert("Please enter a value for the \"BusinessNameBox\" field.");
+         businessNameBox.focus();
+         return false;
+      }
+      if (businessNameBox.value.length < 2)
+      {
+         alert("Please enter at least 2 characters in the \"BusinessNameBox\" field.");
+         businessNameBox.focus();
+         return false;
+      }
+      if (businessNameBox.value.length > 100)
+      {
+         alert("Please enter at most 100 characters in the \"BusinessNameBox\" field.");
+         businessNameBox.focus();
+         return false;
+      }
+   }
+   var addressBox = document.getElementById('addressBox');
+   if (!(addressBox.disabled || addressBox.style.display === 'none' || addressBox.style.visibility === 'hidden'))
+   {
+      regexp = /^[A-Za-zÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ.,\'& \t\r\n\f0-9-]*$/;
+      if (!regexp.test(addressBox.value))
+      {
+         alert("Please enter only letter, digit and whitespace characters in the \"AddressBox\" field.");
+         addressBox.focus();
+         return false;
+      }
+      if (addressBox.value == "")
+      {
+         alert("Please enter a value for the \"AddressBox\" field.");
+         addressBox.focus();
+         return false;
+      }
+      if (addressBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"AddressBox\" field.");
+         addressBox.focus();
+         return false;
+      }
+      if (addressBox.value.length > 150)
+      {
+         alert("Please enter at most 150 characters in the \"AddressBox\" field.");
+         addressBox.focus();
+         return false;
+      }
+   }
+   var stateComboBox = document.getElementById('stateComboBox');
+   if (!(stateComboBox.disabled ||
+         stateComboBox.style.display === 'none' ||
+         stateComboBox.style.visibility === 'hidden'))
+   {
+      if (stateComboBox.selectedIndex < 0)
+      {
+         alert("Please select one of the \"StateComboBox\" options.");
+         stateComboBox.focus();
+         return false;
+      }
+   }
+   var cityBox = document.getElementById('cityBox');
+   if (!(cityBox.disabled || cityBox.style.display === 'none' || cityBox.style.visibility === 'hidden'))
+   {
+      regexp = /^[A-Za-zÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ,.\'& \t\r\n\f0-9-]*$/;
+      if (!regexp.test(cityBox.value))
+      {
+         alert("Please enter only letter, digit and whitespace characters in the \"CityBox\" field.");
+         cityBox.focus();
+         return false;
+      }
+      if (cityBox.value == "")
+      {
+         alert("Please enter a value for the \"CityBox\" field.");
+         cityBox.focus();
+         return false;
+      }
+      if (cityBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"CityBox\" field.");
+         cityBox.focus();
+         return false;
+      }
+      if (cityBox.value.length > 50)
+      {
+         alert("Please enter at most 50 characters in the \"CityBox\" field.");
+         cityBox.focus();
+         return false;
+      }
+   }
+   var hoursBox = document.getElementById('hoursBox');
+   if (!(hoursBox.disabled || hoursBox.style.display === 'none' || hoursBox.style.visibility === 'hidden'))
+   {
+      regexp = /^[A-Za-zÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ:\- \t\r\n\f0-9-]*$/;
+      if (!regexp.test(hoursBox.value))
+      {
+         alert("Please enter only letter, digit and whitespace characters in the \"HoursBox\" field.");
+         hoursBox.focus();
+         return false;
+      }
+      if (hoursBox.value == "")
+      {
+         alert("Please enter a value for the \"HoursBox\" field.");
+         hoursBox.focus();
+         return false;
+      }
+      if (hoursBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"HoursBox\" field.");
+         hoursBox.focus();
+         return false;
+      }
+      if (hoursBox.value.length > 300)
+      {
+         alert("Please enter at most 300 characters in the \"HoursBox\" field.");
+         hoursBox.focus();
+         return false;
+      }
+   }
+   var phoneBox = document.getElementById('phoneBox');
+   if (!(phoneBox.disabled || phoneBox.style.display === 'none' || phoneBox.style.visibility === 'hidden'))
+   {
+      regexp = /^[-+]?\d*\.?\d*$/;
+      if (!regexp.test(phoneBox.value))
+      {
+         alert("Please enter only digit characters in the \"PhoneBox\" field.");
+         phoneBox.focus();
+         return false;
+      }
+      if (phoneBox.value == "")
+      {
+         alert("Please enter a value for the \"PhoneBox\" field.");
+         phoneBox.focus();
+         return false;
+      }
+      if (phoneBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"PhoneBox\" field.");
+         phoneBox.focus();
+         return false;
+      }
+      if (phoneBox.value.length > 10)
+      {
+         alert("Please enter at most 10 characters in the \"PhoneBox\" field.");
+         phoneBox.focus();
+         return false;
+      }
+   }
+   var keywordBox = document.getElementById('keywordBox');
+   if (!(keywordBox.disabled || keywordBox.style.display === 'none' || keywordBox.style.visibility === 'hidden'))
+   {
+      regexp = /^[A-Za-zÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ,.'\-& ]*$/;
+      if (!regexp.test(keywordBox.value))
+      {
+         alert("Please enter only letter characters in the \"KeywordBox\" field.");
+         keywordBox.focus();
+         return false;
+      }
+      if (keywordBox.value == "")
+      {
+         alert("Please enter a value for the \"KeywordBox\" field.");
+         keywordBox.focus();
+         return false;
+      }
+      if (keywordBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"KeywordBox\" field.");
+         keywordBox.focus();
+         return false;
+      }
+      if (keywordBox.value.length > 100)
+      {
+         alert("Please enter at most 100 characters in the \"KeywordBox\" field.");
+         keywordBox.focus();
+         return false;
+      }
+   }
+   var paymentBox = document.getElementById('paymentBox');
+   if (!(paymentBox.disabled || paymentBox.style.display === 'none' || paymentBox.style.visibility === 'hidden'))
+   {
+      regexp = /^[A-Za-zÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ, ]*$/;
+      if (!regexp.test(paymentBox.value))
+      {
+         alert("Please enter only letter characters in the \"PaymentBox\" field.");
+         paymentBox.focus();
+         return false;
+      }
+      if (paymentBox.value == "")
+      {
+         alert("Please enter a value for the \"PaymentBox\" field.");
+         paymentBox.focus();
+         return false;
+      }
+      if (paymentBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"PaymentBox\" field.");
+         paymentBox.focus();
+         return false;
+      }
+      if (paymentBox.value.length > 100)
+      {
+         alert("Please enter at most 100 characters in the \"PaymentBox\" field.");
+         paymentBox.focus();
+         return false;
+      }
+   }
+   var websiteBox = document.getElementById('websiteBox');
+   if (!(websiteBox.disabled || websiteBox.style.display === 'none' || websiteBox.style.visibility === 'hidden'))
+   {
+      regexp = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+      if (!regexp.test(websiteBox.value))
+      {
+         alert("The specified value is invalid.");
+         websiteBox.focus();
+         return false;
+      }
+      if (websiteBox.value == "")
+      {
+         alert("Please enter a value for the \"WebsiteBox\" field.");
+         websiteBox.focus();
+         return false;
+      }
+      if (websiteBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"WebsiteBox\" field.");
+         websiteBox.focus();
+         return false;
+      }
+      if (websiteBox.value.length > 300)
+      {
+         alert("Please enter at most 300 characters in the \"WebsiteBox\" field.");
+         websiteBox.focus();
+         return false;
+      }
+   }
+   var categoryComboBox = document.getElementById('categoryComboBox');
+   if (!(categoryComboBox.disabled ||
+         categoryComboBox.style.display === 'none' ||
+         categoryComboBox.style.visibility === 'hidden'))
+   {
+      if (categoryComboBox.selectedIndex < 0)
+      {
+         alert("Please select one of the \"CategoryComboBox\" options.");
+         categoryComboBox.focus();
+         return false;
+      }
+   }
+   var businessEmailBox = document.getElementById('businessEmailBox');
+   if (!(businessEmailBox.disabled || businessEmailBox.style.display === 'none' || businessEmailBox.style.visibility === 'hidden'))
+   {
+      regexp = /^([0-9a-z]([-.\w]*[0-9a-z])*@(([0-9a-z])+([-\w]*[0-9a-z])*\.)+[a-z]{2,6})$/i;
+      if (!regexp.test(businessEmailBox.value))
+      {
+         alert("Please enter a valid email address.");
+         businessEmailBox.focus();
+         return false;
+      }
+      if (businessEmailBox.value == "")
+      {
+         alert("Please enter a value for the \"BusinessEmailBox\" field.");
+         businessEmailBox.focus();
+         return false;
+      }
+      if (businessEmailBox.value.length < 1)
+      {
+         alert("Please enter at least 1 characters in the \"BusinessEmailBox\" field.");
+         businessEmailBox.focus();
+         return false;
+      }
+      if (businessEmailBox.value.length > 100)
+      {
+         alert("Please enter at most 100 characters in the \"BusinessEmailBox\" field.");
+         businessEmailBox.focus();
+         return false;
+      }
+   }
+   var descTextArea = document.getElementById('descTextArea');
+   if (!(descTextArea.disabled || descTextArea.style.display === 'none' || descTextArea.style.visibility === 'hidden'))
+   {
+      if (descTextArea.value.length <50)
+      {
+         alert("Please enter something in the \"DescTextArea\" field.");
+         descTextArea.focus();
+         return false;
+      }
+   }
+   return true;
+}
+</script>
+<script src="static/js/libs/wwb16.min.js"></script>
+<script>
+$(document).ready(function()
+{
+   $('#reviewsImage1').addClass('visibility-hidden');
+   $('#portfolio-image2').addClass('visibility-hidden');
+   $('#ThemeableMenu2 .dropdown-toggle').dropdown({popperConfig:{placement:'bottom-start',modifiers:{computeStyle:{gpuAcceleration:false}}}});
+   $(document).on('click','.ThemeableMenu2-navbar-collapse.show',function(e)
+   {
+      if ($(e.target).is('a') && ($(e.target).attr('class') != 'dropdown-toggle')) 
+      {
+         $(this).collapse('hide');
+      }
+   });
+   $("a[href*='#signupmaingrid']").click(function(event)
+   {
+      event.preventDefault();
+      $('html, body').stop().animate({ scrollTop: $('#wb_signupmaingrid').offset().top-88 }, 600, 'easeOutCirc');
+   });
+   function onScrollsignupmaingrid()
+   {
+      var $obj = $("#wb_signupmaingrid");
+      if (!$obj.hasClass("in-viewport") && $obj.inViewPort(false))
+      {
+         $obj.addClass("in-viewport");
+         AnimateCss('reviewsImage1', 'animate-fade-in-up', 0, 1000);
+         AnimateCss('portfolio-image2', 'animate-fade-in-up', 500, 1000);
+      }
+   }
+   onScrollsignupmaingrid();
+   $(window).scroll(function(event)
+   {
+      onScrollsignupmaingrid();
+   });
+});
+</script>
+</head>
+<body>
+<div id="wb_LayoutGrid3">
+<form name="LayoutGrid3" method="post" action="" enctype="text/plain" id="LayoutGrid3">
+<div class="row">
+<div class="col-1">
+<div id="wb_ThemeableMenu2" style="display:inline-block;width:100%;z-index:0;">
+<div id="ThemeableMenu2" class="ThemeableMenu2" style="width:100%;height:auto !important;">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".ThemeableMenu2-navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="ThemeableMenu2-navbar-collapse collapse">
+<ul class="nav navbar-nav">
+   <li class="nav-item">
+      <a href="/" class="nav-link">HOME</a>
+      </li>
+      <li class="nav-item">
+      <a href="/signinup" class="nav-link">SIGN IN</a>
+      </li>
+      <li class="nav-item">
+      <a href="/categories" class="nav-link">CATEGORIES</a>
+      </li>
+      <li class="nav-item">
+      <a href="/contact" class="nav-link">CONTACT</a>
+      </li>
+      <li class="nav-item">
+      <a href="/about" class="nav-link">ABOUT</a>
+      </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-2">
+<input type="text" id="searchBox" style="display:block;width: 100%;height:36px;z-index:1;" name="searchTerm" value="" spellcheck="false" placeholder="Enter anything">
+</div>
+<div class="col-3">
+   <input type="submit" id="searchButton" name="searchSubmit" value="Submit" style="display:inline-block;width:96px;height:37px;">
+</div>
+</div>
+</form>
+</div>
+<div id="wb_signupmaingrid">
+<div id="signupmaingrid">
+<div class="row">
+<div class="col-1">
+<div id="wb_listingHeading" style="display:inline-block;width:100%;z-index:28;">
+<h1 id="listingHeading">Submit a Listing</h1>
+</div>
+<div id="wb_LayoutGrid1">
+<form name="submitlistingform" method="post" action="/submitlisting" enctype="multipart/form-data" id="LayoutGrid1" onsubmit="return submitsubmitlistingform()">
+<div class="row">
+<div class="col-1">
+</div>
+<div class="col-2">
+   {% with messages = get_flashed_messages() %}
+   {% if messages %}
+     {% for message in messages %}
+       <div>
+         {{ message }}
+       </div>
+     {% endfor %}
+   {% endif %}
+ {% endwith %}
+<label for="businessNameBox" id="businessNameLabel" style="display:block;width:100%;line-height:16px;z-index:3;">Business Name*</label>
+<input type="text" id="businessNameBox" style="display:block;width: 100%;height:26px;z-index:4;" name="BusinessNameBox" value="{{ data['name'] }}" spellcheck="false" placeholder="My business name here">
+<label for="addressBox" id="addressLabel" style="display:block;width:100%;line-height:16px;z-index:5;">Address</label>
+<input type="text" id="addressBox" style="display:block;width: 100%;height:26px;z-index:6;" name="AddressBox" value="{{ data['address'] }}" spellcheck="false" placeholder="1234 E. Something Ave.">
+<label for="stateComboBox" id="stateLabel" style="display:inline-block;width:46px;line-height:16px;z-index:7;">State*</label>
+<select name="StateComboBox" size="1" id="stateComboBox" style="display:inline-block;width:97px;height:28px;z-index:8;">
+   {% for state in stat %}
+   <option>{{ state }}</option>
+   {% endfor %}
+</select>
+<label for="cityBox" id="cityLabel" style="display:inline-block;width:46px;line-height:16px;z-index:9;">City*</label>
+<input type="text" id="cityBox" style="display:inline-block;width:239px;height:26px;z-index:10;" name="CityBox" value="{{ data['city'] }}" spellcheck="false" placeholder="San Diego">
+<label for="hoursBox" id="hoursLabel" style="display:block;width:100%;line-height:16px;z-index:11;">Hours*</label>
+<input type="text" id="hoursBox" style="display:block;width: 100%;height:26px;z-index:12;" name="HoursBox" value="{{ data['hours'] }}" spellcheck="false" placeholder="Mon-Sat 8:00 AM - 8:00 PM">
+<label for="paymentBox" id="paymentLabel" style="display:block;width:100%;line-height:16px;z-index:13;">Payment Methods</label>
+<input type="text" id="paymentBox" style="display:block;width: 100%;height:26px;z-index:14;" name="PaymentBox" value="{{ data['payment'] }}" spellcheck="false" placeholder="Cash, Check, Visa">
+<label for="websiteBox" id="websiteLabel" style="display:block;width:100%;line-height:16px;z-index:15;">Website</label>
+<input type="text" id="websiteBox" style="display:block;width: 100%;height:26px;z-index:16;" name="WebsiteBox" value="{{ data['url'] }}" spellcheck="false" placeholder="https://">
+<label for="phoneBox" id="phoneLabel" style="display:block;width:100%;line-height:16px;z-index:17;">Phone*</label>
+<input type="tel" id="phoneBox" style="display:block;width: 100%;height:26px;z-index:18;" name="PhoneBox" value="{{ data['phone'] }}" maxlength="10" spellcheck="false" placeholder="0123456789">
+<label for="categoryComboBox" id="categoryLabel" style="display:block;width:100%;line-height:16px;z-index:19;">Categories*</label>
+<select name="CategoryComboBox" size="1" id="categoryComboBox" style="display:block;width: 100%;height:28px;z-index:20;">
+   {% for category in catgori %}
+   <option>{{ category }}</option>
+   {% endfor %}
+</select>
+<label for="keywordBox" id="keywordLabel" style="display:block;width:100%;line-height:16px;z-index:21;">Keywords* (up to five, separated with a comma)</label>
+<input type="text" id="keywordBox" style="display:block;width: 100%;height:26px;z-index:22;" name="KeywordBox" value="{{ data['keywords'] }}" spellcheck="false" placeholder="Computers, Dental, Lamp Repair">
+<label for="businessEmailBox" id="emailBox" style="display:block;width:100%;line-height:16px;z-index:23;">Business Email*</label>
+<input type="text" id="businessEmailBox" style="display:block;width: 100%;height:26px;z-index:24;" name="BusinessEmailBox" value="{{ data['email'] }}" spellcheck="false" placeholder="adam@zapoo.com">
+<label for="descTextArea" id="descLabel" style="display:block;width:100%;line-height:16px;z-index:25;">Description (up to 1000 characters)*</label>
+<textarea name="DescTextArea" id="descTextArea" style="display:block;width: 100%;;height:167px;z-index:26;" rows="10" cols="50" maxlength="1000" spellcheck="false" required>{{ data['description'] }}</textarea>
+<input type="submit" id="submitButton" name="SubmitButton" value="Submit" style="display:inline-block;width:100px;height:46px;z-index:27;">
+</div>
+<div class="col-3">
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wb_LayoutGrid5">
+<div id="LayoutGrid5">
+<div class="col-1">
+<div id="wb_footerText">
+<p style="font-size:13px;line-height:16px;color:#F0D217;">A capstone project by Adam Dural</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
