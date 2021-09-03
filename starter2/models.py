@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 import json
 
 database_name = "Zapoo"
-database_path = "postgresql://{}/{}".format('postgres:spritecool19@localhost:5432', database_name)
+database_path = "postgresql://{}/{}".format('postgres:PASSWORDHERE@localhost:5432', database_name)
 
 db = SQLAlchemy()
 
