@@ -1,11 +1,19 @@
 =DOCUMENTATION=
+
 ==Introduction==
+
 ===How to Install===
+
 ====Frontend====
+
 ====Backend====
+
 ===Backend Documentation===
+
 ====Models====
+
 ===Frontend Documentation===
+
 ==Thanks==
 
 --Introduction
@@ -128,20 +136,35 @@ Listing
 Carries all information about the company listing.
 
 -ID --> The ID of the listing. Unique Integer
+
 -BUSINESSNAME --> The business name. Unique Varchar Length 100
+
 -ADDRESS --> The physical address. Varchar Length 150
+
 -STATE --> The state in the United States. Varchar Length 4
+
 -CITY --> The city in the United States. Varchar Length 50
+
 -HOURS --> Hours of the business in Text. Varchar Length 300
+
 -PAYMENT_TYPE --> Credit Card, Debit Card, Cash, Check. Varchar Length 100
+
 -WEBSITE_LINK --> The website URL. Varchar Length 300
+
 -PHONE --> The phone number formatted in 0123456789. Varchar length 10
+
 -CATEGORIES --> The type of business. Foreign Key of Categories.
+
 -KEYWORDS --> They keywords to search for a particular business in the directory (up to 5 keywords). Varchar length 100
+
 -BUSINESS_EMAIL --> The email address of the business. Varchar 100
+
 -DESCRIPTION --> The description of the business. Varchar 1000
+
 -TIME_OF_CREATION --> The date of when the listing was created. DateTime (format: yyyy-mm-dd hh:mm:ss)
+
 -LAYOUTID --> The page layout. Integer
+
 -STYLEID --> The page coloring. Integer
 
 
@@ -150,9 +173,13 @@ User
 The registered user on Zapoo.
 
 -ID --> The user id. Unique Integer
+
 -USER_EMAIL --> The user's email to login. Varchar Length 140
+
 -PASSWORD --> The user's password after hashing. Should be at least 8 characters in length. Varchar
+
 -IS_ACTIVE --> Ensures that the user did confirm the email before they are able to add a listing, and if the user wishes to remain active on the website. Boolean.
+
 -LISTING_ID --> The listing that the user created. Foreign Key Integer of Listing.
 
 Categories
@@ -160,14 +187,18 @@ Categories
 Separates and organizes business listings based on what they do.
 
 -ID --> The category ID. Unique Integer
+
 -CATEGORY_NAME --> The category name. Varchar 50
 
 Email Confirmation Links
 
 Ensures user verification and identity upon registration.
 -ID --> The ECL ID (as a way to keep count).
+
 -USER --> The User ID. Foreign Key of User ID.
+
 -CODE --> The code needed to confirm verification when the user clicks on the email link. Unique Varchar 200
+
 -IS_CONFIRMED --> A boolean value to confirm if the user has activated their account. Boolean
 
 
@@ -175,9 +206,13 @@ Ensures user verification and identity upon registration.
 ---Frontend Documentation
 I will use the following extensions/frameworks to develop the frontend:
 -JQuery
+
 -CSS
+
 -JavaScript
+
 -Bootstrap
+
 -flexbox
 
 ----SiteMap
