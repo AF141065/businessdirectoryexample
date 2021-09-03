@@ -1,20 +1,4 @@
-=DOCUMENTATION=
 
-==Introduction==
-
-===How to Install===
-
-====Frontend====
-
-====Backend====
-
-===Backend Documentation===
-
-====Models====
-
-===Frontend Documentation===
-
-==Thanks==
 
 --Introduction
 
